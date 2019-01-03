@@ -1,0 +1,10 @@
+*.logs
+*.log
+bin/*
+GPUCache/**
+CachedExtensions/**
+logs/**
+Cache/**
+Backups/**
+CachedData
+User
