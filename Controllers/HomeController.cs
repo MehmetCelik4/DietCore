@@ -273,9 +273,12 @@ namespace Dietcore.Controllers
             basketItems.Add(secondBasketItem);
 
             request.BasketItems = basketItems;
+            request.ForceThreeDS = 1;
 
             CheckoutFormInitialize checkoutFormInitialize = await CheckoutFormInitialize.CreateAsync(request, options);
             ViewData["Checkout"] = checkoutFormInitialize.CheckoutFormContent;
+
+            // ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(request, options);
             return View();
 
         }
