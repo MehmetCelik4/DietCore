@@ -144,7 +144,7 @@ using Dietcore.Models;
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
             EndContext();
             BeginContext(927, 54, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d42ffec1de2436d827f552982bfe004", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c2d543bd0ce4d0fa34efa8f5a9fb53a", async() => {
                 BeginContext(973, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -179,7 +179,7 @@ using Dietcore.Models;
             WriteLiteral(" |\r\n    ");
             EndContext();
             BeginContext(989, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97804d95271f455593d1444b3d7b853c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f58d86a54b184bffada3d48c67afe4ba", async() => {
                 BeginContext(1011, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();

@@ -47,3 +47,7 @@
 /home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Customers/Onay.g.cshtml.cs
 /home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Customers/Fail.g.cshtml.cs
 /home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Customers/Success.g.cshtml.cs
+/home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Home/StartCheckout.g.cshtml.cs
+/home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Home/Fail.g.cshtml.cs
+/home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Home/Onay.g.cshtml.cs
+/home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Home/Success.g.cshtml.cs
