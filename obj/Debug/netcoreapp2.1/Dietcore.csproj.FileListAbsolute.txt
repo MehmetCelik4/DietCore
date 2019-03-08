@@ -45,4 +45,5 @@
 /home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Customers/Index.g.cshtml.cs
 /home/mehmet/project/dotnet/Dietcore/bin/Debug/netcoreapp2.1/app.db
 /home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Customers/Onay.g.cshtml.cs
-/home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Customers/Suc.g.cshtml.cs
+/home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Customers/Fail.g.cshtml.cs
+/home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Customers/Success.g.cshtml.cs
