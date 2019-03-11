@@ -15,5 +15,7 @@ namespace Dietcore.Data
         }
         public DbSet<Dietcore.Models.Dietitian> Dietitian { get; set; }
         public DbSet<Dietcore.Models.Customer> Customer { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+
     }
 }

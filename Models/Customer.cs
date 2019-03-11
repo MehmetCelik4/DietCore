@@ -24,6 +24,8 @@ namespace Dietcore.Models
         [Display(Name = "Full Name")]
         public int DietitianID { get; set; }
         public Dietitian Dietitian { get; set; }
+
+        public ICollection<Appointment> Appointments { get; set; }
         public string FullName
         {
             get

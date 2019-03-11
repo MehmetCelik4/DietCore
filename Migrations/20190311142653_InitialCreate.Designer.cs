@@ -9,14 +9,36 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dietcore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190103122841_addDietitianandCustomer")]
-    partial class addDietitianandCustomer
+    [Migration("20190311142653_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024");
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085");
+
+            modelBuilder.Entity("Dietcore.Models.Appointment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CustomerId");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("DietitianID");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("DietitianID");
+
+                    b.ToTable("Appointments");
+                });
 
             modelBuilder.Entity("Dietcore.Models.Customer", b =>
                 {
@@ -223,6 +245,19 @@ namespace Dietcore.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Dietcore.Models.Appointment", b =>
+                {
+                    b.HasOne("Dietcore.Models.Customer", "Customer")
+                        .WithMany("Appointments")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Dietcore.Models.Dietitian", "Dietitian")
+                        .WithMany("Appointments")
+                        .HasForeignKey("DietitianID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Dietcore.Models.Customer", b =>

@@ -31,5 +31,6 @@ namespace Dietcore.Models
         }
 
         public ICollection<Customer> Customers { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
     }
 }

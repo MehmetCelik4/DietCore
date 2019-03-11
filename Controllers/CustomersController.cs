@@ -194,7 +194,7 @@ namespace Dietcore.Controllers
 
         [HttpPost]
         [Consumes("application/x-www-form-urlencoded")]
-        public async Task<IActionResult> Onay([FromForm] string token)
+        public IActionResult Onay([FromForm] string token)
         {
             var options = new Options
             {
