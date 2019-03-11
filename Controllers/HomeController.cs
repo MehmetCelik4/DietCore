@@ -17,47 +17,27 @@ namespace Dietcore.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+
+        public readonly Options option;
+           
+        public HomeController()
         {
-            return View();
-        }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-
-
-        public async Task<IActionResult> CreateSubMerchant(int id)
-        {
-
-            var options = new Options
+            Options config = new Options
             {
                 ApiKey = "sandbox-pvY8iL8GbralWyf3rbzqqvP0SSouP6sQ",
                 SecretKey = "sandbox-cVojNOhBjRqVjhhOThOFfv4cy35zKmC5",
                 BaseUrl = "https://sandbox-api.iyzipay.com"
             };
+            option = config;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> CreateSubMerchant(int id)
+        {
 
             CreateSubMerchantRequest request = new CreateSubMerchantRequest
             {
@@ -76,7 +56,7 @@ namespace Dietcore.Controllers
                 Currency = Currency.TRY.ToString()
             };
 
-            SubMerchant subMerchant = await SubMerchant.CreateAsync(request, options);
+            SubMerchant subMerchant = await SubMerchant.CreateAsync(request, option);
 
             return RedirectToAction(nameof(Index));
         }
@@ -84,14 +64,7 @@ namespace Dietcore.Controllers
 
         public async Task<IActionResult> GetSubMerchant(int id)
         {
-            var options = new Options
-            {
-                ApiKey = "sandbox-pvY8iL8GbralWyf3rbzqqvP0SSouP6sQ",
-                SecretKey = "sandbox-cVojNOhBjRqVjhhOThOFfv4cy35zKmC5",
-                BaseUrl = "https://sandbox-api.iyzipay.com"
-            };
-
-
+          
             RetrieveSubMerchantRequest request = new RetrieveSubMerchantRequest
 
             {
@@ -100,21 +73,14 @@ namespace Dietcore.Controllers
                 ConversationId = "123456789"
             };
 
-            SubMerchant subMerchant = await SubMerchant.RetrieveAsync(request, options);
+            SubMerchant subMerchant = await SubMerchant.RetrieveAsync(request, option);
 
             return RedirectToAction(nameof(Index));
 
         }
         public async Task<IActionResult> UpdateSubMerchant(int id)
         {
-            var options = new Options
-            {
-                ApiKey = "sandbox-pvY8iL8GbralWyf3rbzqqvP0SSouP6sQ",
-                SecretKey = "sandbox-cVojNOhBjRqVjhhOThOFfv4cy35zKmC5",
-                BaseUrl = "https://sandbox-api.iyzipay.com"
-            };
-
-
+          
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest
 
 
@@ -133,21 +99,14 @@ namespace Dietcore.Controllers
                 Currency = Currency.TRY.ToString()
             };
 
-            SubMerchant subMerchant = await SubMerchant.UpdateAsync(request, options);
+            SubMerchant subMerchant = await SubMerchant.UpdateAsync(request, option);
 
             return RedirectToAction(nameof(Index));
 
         }
         public async Task<IActionResult> ApproveSubMerchant(int id)
         {
-            var options = new Options
-            {
-                ApiKey = "sandbox-pvY8iL8GbralWyf3rbzqqvP0SSouP6sQ",
-                SecretKey = "sandbox-cVojNOhBjRqVjhhOThOFfv4cy35zKmC5",
-                BaseUrl = "https://sandbox-api.iyzipay.com"
-            };
-
-
+            
             CreateApprovalRequest request = new CreateApprovalRequest
 
             {
@@ -156,21 +115,14 @@ namespace Dietcore.Controllers
                 PaymentTransactionId = "11807130"
             };
 
-            Approval approval = await Approval.CreateAsync(request, options);
+            Approval approval = await Approval.CreateAsync(request, option);
 
             return RedirectToAction(nameof(Index));
 
         }
         public async Task<IActionResult> DisapproveSubMerchant(int id)
         {
-            var options = new Options
-            {
-                ApiKey = "sandbox-pvY8iL8GbralWyf3rbzqqvP0SSouP6sQ",
-                SecretKey = "sandbox-cVojNOhBjRqVjhhOThOFfv4cy35zKmC5",
-                BaseUrl = "https://sandbox-api.iyzipay.com"
-            };
-
-
+          
             CreateApprovalRequest request = new CreateApprovalRequest
 
             {
@@ -179,19 +131,14 @@ namespace Dietcore.Controllers
                 PaymentTransactionId = "11807130"
             };
 
-            Disapproval disapproval = await Disapproval.CreateAsync(request, options);
+            Disapproval disapproval = await Disapproval.CreateAsync(request, option);
 
             return RedirectToAction(nameof(Index));
 
         }
         public async Task<IActionResult> StartCheckout(int id)
         {
-            var options = new Options
-            {
-                ApiKey = "sandbox-pvY8iL8GbralWyf3rbzqqvP0SSouP6sQ",
-                SecretKey = "sandbox-cVojNOhBjRqVjhhOThOFfv4cy35zKmC5",
-                BaseUrl = "https://sandbox-api.iyzipay.com"
-            };
+
             CreateCheckoutFormInitializeRequest request = new CreateCheckoutFormInitializeRequest
             {
                 Locale = Locale.TR.ToString(),
@@ -275,10 +222,9 @@ namespace Dietcore.Controllers
             request.BasketItems = basketItems;
             request.ForceThreeDS = 1;
 
-            CheckoutFormInitialize checkoutFormInitialize = await CheckoutFormInitialize.CreateAsync(request, options);
+            CheckoutFormInitialize checkoutFormInitialize = await CheckoutFormInitialize.CreateAsync(request, option);
             ViewData["Checkout"] = checkoutFormInitialize.CheckoutFormContent;
 
-            // ThreedsInitialize threedsInitialize = ThreedsInitialize.Create(request, options);
             return View();
 
         }
@@ -287,12 +233,6 @@ namespace Dietcore.Controllers
         [Consumes("application/x-www-form-urlencoded")]
         public async Task<IActionResult> Onay([FromForm] string token)
         {
-            var options = new Options
-            {
-                ApiKey = "sandbox-pvY8iL8GbralWyf3rbzqqvP0SSouP6sQ",
-                SecretKey = "sandbox-cVojNOhBjRqVjhhOThOFfv4cy35zKmC5",
-                BaseUrl = "https://sandbox-api.iyzipay.com"
-            };
 
             RetrieveCheckoutFormRequest request = new RetrieveCheckoutFormRequest
             {
@@ -300,7 +240,7 @@ namespace Dietcore.Controllers
                 Token = token
             };
 
-            CheckoutForm checkoutForm = CheckoutForm.Retrieve(request, options);
+            CheckoutForm checkoutForm = CheckoutForm.Retrieve(request, option);
             ViewData["Approval"] = checkoutForm.PaymentStatus;
             if (checkoutForm.PaymentStatus == "SUCCESS")
             {
