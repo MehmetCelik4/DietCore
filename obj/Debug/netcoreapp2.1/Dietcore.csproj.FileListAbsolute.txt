@@ -51,3 +51,4 @@
 /home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Home/Fail.g.cshtml.cs
 /home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Home/Onay.g.cshtml.cs
 /home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Home/Success.g.cshtml.cs
+/home/mehmet/project/dotnet/Dietcore/obj/Debug/netcoreapp2.1/Razor/Views/Home/GetSubMerchant.g.cshtml.cs

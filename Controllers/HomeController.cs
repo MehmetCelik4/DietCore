@@ -19,7 +19,9 @@ namespace Dietcore.Controllers
     {
 
         public readonly Options option;
-           
+
+        [BindProperty]
+        public MerchantViewModel MerchantVM { get; set; }
         public HomeController()
         {
             Options config = new Options
@@ -29,6 +31,13 @@ namespace Dietcore.Controllers
                 BaseUrl = "https://sandbox-api.iyzipay.com"
             };
             option = config;
+
+
+            MerchantVM = new MerchantViewModel()
+            {
+                SubMerchant = new SubMerchant()
+            };
+
         }
 
         public IActionResult Index()
@@ -64,7 +73,7 @@ namespace Dietcore.Controllers
 
         public async Task<IActionResult> GetSubMerchant(int id)
         {
-          
+
             RetrieveSubMerchantRequest request = new RetrieveSubMerchantRequest
 
             {
@@ -73,14 +82,14 @@ namespace Dietcore.Controllers
                 ConversationId = "123456789"
             };
 
-            SubMerchant subMerchant = await SubMerchant.RetrieveAsync(request, option);
+            MerchantVM.SubMerchant = await SubMerchant.RetrieveAsync(request, option);
+            return View(MerchantVM);
 
-            return RedirectToAction(nameof(Index));
 
         }
         public async Task<IActionResult> UpdateSubMerchant(int id)
         {
-          
+
             UpdateSubMerchantRequest request = new UpdateSubMerchantRequest
 
 
@@ -106,7 +115,7 @@ namespace Dietcore.Controllers
         }
         public async Task<IActionResult> ApproveSubMerchant(int id)
         {
-            
+
             CreateApprovalRequest request = new CreateApprovalRequest
 
             {
@@ -122,7 +131,7 @@ namespace Dietcore.Controllers
         }
         public async Task<IActionResult> DisapproveSubMerchant(int id)
         {
-          
+
             CreateApprovalRequest request = new CreateApprovalRequest
 
             {
@@ -231,7 +240,7 @@ namespace Dietcore.Controllers
 
         [HttpPost]
         [Consumes("application/x-www-form-urlencoded")]
-        public async Task<IActionResult> Onay([FromForm] string token)
+        public IActionResult Onay([FromForm] string token)
         {
 
             RetrieveCheckoutFormRequest request = new RetrieveCheckoutFormRequest
